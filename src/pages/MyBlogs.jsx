@@ -1,7 +1,7 @@
 import supabase from '../config/supabaseClient'
 import { useState, useEffect } from 'react'
 
-function Blog() {
+function MyBlogs() {
   const [error, setError] = useState(null);
   const [posts, setPosts] = useState(null);
 
@@ -48,4 +48,4 @@ function Blog() {
   )
 }
 
-export default Blog
+export default MyBlogs
