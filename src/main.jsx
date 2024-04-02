@@ -4,6 +4,8 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home, Trending, New, Update, MyBlogs } from "./pages/Export.js"
 import './index.css'
+import Modify from './components/Modify.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -23,14 +25,13 @@ const router = createBrowserRouter([
     Component: New
   },
   {
-    path: "/update/:id",
-    Component: Update
+    path: "/edit/:id",
+    Component: Modify
   },
   {
-    path: "/myBlogs",
+    path: "/my-blogs",
     Component: MyBlogs
   },
-
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

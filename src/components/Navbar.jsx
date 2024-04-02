@@ -12,7 +12,7 @@ const Links = [
     text: "HOME",
   },
   {
-    path: "/blog",
+    path: "/my-blogs",
     text: "BLOGS",
   },
   {
@@ -48,7 +48,7 @@ const Navbar = () => {
             <Link
               to={link.path}
               key={link.path}
-              className={`text-lg py-[42px] font-lora font-semibold border-transparent border-b-2 
+              className={`text-lg py-[42px] font-semibold border-transparent border-b-2 
               ${link.text === "TRENDING" ? 'hover:text-red-400 hover:border-red-400' : 'hover:text-sky-400 hover:border-sky-400'}`}
             >
               {link.text}

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Blog, Navbar } from "../components/ComponentExport";
+import { News, Navbar } from "../components/ComponentExport";
 
 
 const Trending = () => {
@@ -29,16 +29,19 @@ const Trending = () => {
 
 
   return (
-    <div>
+    <div className="pb-12">
       <Navbar />
+      <h1 className="text-3xl text-center font-semibold mb-2 mt-12">TRENDING NEWS</h1>
+      <div className="w-1/2 drop-shadow-2xl mx-auto bg-black h-[1px] mb-10"> </div>
       <div
         className="
           2xl:grid xl:grid flex flex-col grid-cols-2 gap-10 
-          xl:w-8/12 lg:w-10/12 md:w-12/12 md:gap-4 mx-auto mt-7
-          sm:grid 
+          xl:w-8/12 lg:w-10/12 md:w-12/12 md:gap-4 mx-auto 
+          sm:grid
           items-center justify-items-center
         "
       >
+
         {results && results
           .filter(result =>
             result.content !== null &&
@@ -47,7 +50,7 @@ const Trending = () => {
             result.urlToImage !== null
           )
           .map((result, idx) => (
-            <Blog
+            <News
               key={idx}
               altname={result.title}
               imgsrc={result.urlToImage}
