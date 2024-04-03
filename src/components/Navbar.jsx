@@ -37,7 +37,7 @@ const Navbar = () => {
     <div>
       <div className="flex justify-between px-10 items-center h-28 w-full xl:px-52 lg:px-32 md:px-20 sm:px-10">
         <div >
-          <h1 className="text-4xl font-cinzel-decorative hover:text-sky-400">
+          <h1 className="text-4xl font-cinzel-decorative font-medium hover:text-sky-400">
             <Link to="/">TOUR</Link>
           </h1>
         </div>
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <Link
                   to={link.path}
                   key={link.path}
-                  className={`text-lg py-4 px-10 font-lora font-semibold border-transparent border-b-2 text-center
+                  className={`text-lg py-3 border-b-[1px #00000001] border-dashed px-10 font-sans font-normal border-b text-center
               ${link.text === "TRENDING" ? 'hover:text-red-400 hover:border-red-400' : 'hover:text-sky-400 hover:border-sky-400'}`}
                 >
                   {link.text}

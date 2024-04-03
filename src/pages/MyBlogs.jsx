@@ -16,7 +16,7 @@ const customStyles = {
     transition: 'background-color 0.3s'
   },
   container: "max-w-4xl drop-shadow-md mx-auto py-5 px-10 rounded-lg",
-  heading: "text-3xl text-center font-semibold my-5",
+  heading: "text-3xl text-center font-normal my-5",
   line: "w-1/2 drop-shadow-2xl mx-auto bg-black h-[1px] mb-7 opacity-[40%]",
   newBlog: "text-center text-white bg-green-400 hover:bg-green-700 -translate-x-1/2 ml-[50%] inline-block mb-4 -mt-4"
 }
@@ -66,6 +66,7 @@ function MyBlogs() {
       const { data, error } = await supabase
         .from("posts")
         .select('*')
+        .order('id', { ascending: true });
 
       if (error) {
         setError("No posts found")
@@ -90,7 +91,7 @@ function MyBlogs() {
           name='new-post'
           style={customStyles.link}
           className={customStyles.newBlog}
-        // onClick={handleClick}
+          href='/new'
         >
           Crate New Blog
         </a>

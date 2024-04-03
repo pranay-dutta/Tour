@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/new",
-    Component: New
+    Component: Modify
   },
   {
     path: "/edit/:id",
