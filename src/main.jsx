@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home, Trending, New, Update, MyBlogs } from "./pages/Export.js"
+import { Home, Trending, MyBlogs, Contact, NewPost, Modify, About } from "./pages/Export.js"
 import './index.css'
-import Modify from './components/Modify.jsx'
+
 
 
 const router = createBrowserRouter([
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/new",
-    Component: Modify
+    Component: NewPost
   },
   {
     path: "/edit/:id",
@@ -32,6 +32,7 @@ const router = createBrowserRouter([
     path: "/my-blogs",
     Component: MyBlogs
   },
+  { path: "/about", Component: About }, { path: "/contact", Component: Contact },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

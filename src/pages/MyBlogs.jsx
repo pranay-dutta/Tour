@@ -1,5 +1,6 @@
 import { Navbar, Blog } from '../components/ComponentExport';
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -26,15 +27,39 @@ function MyBlogs() {
   const [error, setError] = useState(null);
   const [posts, setPosts] = useState(null);
   const [open, setOpen] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState(null);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Parse the search string to get the message parameter
+    const searchParams = new URLSearchParams(location.search);
+    const message = searchParams.get('message');
+
+    if (message) {
+      setSnackbarMsg(message);
+      setOpen(true);
+      setTimeout(() => {
+        searchParams.delete('message')
+        const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+        window.history.replaceState({}, '', newUrl);
+      }, 1000);
+    }
+    else {
+      setSnackbarMsg(null);
+      setOpen(false)
+    }
+  }, [location.search, navigate]);
 
 
   const handleDelete = async (id) => {
 
     //deleting single post
-    console.log(id);
     try {
       setPosts(posts.filter(post => post.id !== id));
       await supabase.from('posts').delete().eq("id", id);
+      setSnackbarMsg("Post deleted successfully")
       setOpen(true);
     } catch (error) {
       console.log(error.message);
@@ -44,7 +69,6 @@ function MyBlogs() {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
   const action = (
@@ -120,7 +144,7 @@ function MyBlogs() {
           open={open}
           autoHideDuration={2000}
           onClose={handleClose}
-          message={`Post deleted`}
+          message={snackbarMsg}
           action={action}
         />
       }
