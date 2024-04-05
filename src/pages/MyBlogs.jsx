@@ -1,4 +1,4 @@
-import { Navbar, Blog } from '../components/ComponentExport';
+import { Navbar, Blog, Footer } from '../components/ComponentExport';
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
@@ -148,6 +148,7 @@ function MyBlogs() {
           action={action}
         />
       }
+      <Footer />
     </>
   )
 }
