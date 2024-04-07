@@ -18,8 +18,6 @@ const blogStyles = {
   smallDetails: "block mb-5 text-slate-500",
 }
 
-
-
 const Blog = (props) => {
   /*Delete functionality*/
   const handleClick = () => {

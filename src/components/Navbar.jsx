@@ -19,10 +19,10 @@ const Links = [
     path: "/about",
     text: "ABOUT",
   },
-  {
-    path: "/contact",
-    text: "CONTACT",
-  },
+  // {
+  //   path: "/contact",
+  //   text: "CONTACT",
+  // },
 ]
 const customStyles = {
   heading: "text-4xl font-cinzel-decorative font-medium hover:text-sky-400",
@@ -35,8 +35,6 @@ const customStyles = {
   smLinkContainer: "flex flex-col absolute right-0 top-28 z-10 bg-white drop-shadow-md rounded-lg overflow-hidden",
   smLinkText: "text-lg py-3 border-b-[1px #00000001] border-dashed px-10 font-sans font-normal border-b text-center",
 }
-
-
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -70,6 +68,7 @@ const Navbar = () => {
         </div>
         {/* Mobile navigation*/}
         <div className={customStyles.smScrnContainer}>
+          {/* Button to open close side menu*/}
           {
             show
               ?

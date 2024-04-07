@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
 // Tailwind styles
-const customStyles = {
+const styles = {
   input: "w-full mb-5 p-2 border border-[#ddd] border-solid text-base outline-none duration-300 rounded focus:border-blue-400",
-  link: "no-underline py-2 px-10 text-xl border-none rounded transition duration-300 bg-blue-700 hover:bg-blue-500 text-white block mx-auto mb-5"
+  link: "no-underline py-2 px-10 text-xl border-none rounded transition duration-300 bg-blue-700 hover:bg-blue-500 text-white block mx-auto mb-5",
+  form: "gap-3 items-center justify-center mx-5",
+  formContainer: "container mx-auto bg-slate-100 shadow-md rounded p-5 mt-12",
+
 }
 
 const Modify = () => {
@@ -42,7 +45,6 @@ const Modify = () => {
           created_at: dateString,
         })
         .eq('id', params.id);
-
       if (error) {
         throw error;
       }
@@ -67,7 +69,7 @@ const Modify = () => {
   return (
     <div className="w-full h-screen">
       <Navbar />
-      <div className="container mx-auto bg-slate-100 shadow-md rounded p-5 mt-12">
+      <div className={styles.formContainer}>
         {
           post ?
             /* This form is to edit existing blog */
@@ -77,17 +79,17 @@ const Modify = () => {
                 e.preventDefault();
                 handelUpdate();
               }}
-              className="gap-3 items-center justify-center mx-5 "
+              className={styles.form}
             >
               <input
-                className={customStyles.input}
+                className={styles.input}
                 type="text"
                 name="title"
                 defaultValue={post.title}
                 onChange={(e) => { handleChange(e) }}
               />
               <textarea
-                className={customStyles.input}
+                className={styles.input}
                 name="content"
                 defaultValue={post.content}
                 onChange={(e) => { handleChange(e) }}
@@ -95,13 +97,13 @@ const Modify = () => {
               >
               </textarea>
               <input
-                className={customStyles.input}
+                className={styles.input}
                 type="text"
                 name="author"
                 defaultValue={post.author}
                 onChange={(e) => { handleChange(e) }}
               />
-              <button className={customStyles.link} type="submit">Update</button>
+              <button className={styles.link} type="submit">Update</button>
             </form>
             :
             <h1>No post found to update</h1>
