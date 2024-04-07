@@ -16,7 +16,7 @@ const customStyles = {
     cursor: 'pointer',
     transition: 'background-color 0.3s'
   },
-  container: "max-w-4xl drop-shadow-md mx-auto py-5 px-10 rounded-lg",
+  container: "max-w-4xl drop-shadow-md mx-auto py-5 px-10 rounded-lg min-h-screen",
   heading: "text-3xl text-center font-normal my-5",
   line: "w-1/2 drop-shadow-2xl mx-auto bg-black h-[1px] mb-7 opacity-[40%]",
   newBlog: "text-center text-white bg-green-400 hover:bg-green-700 -translate-x-1/2 ml-[50%] inline-block mb-4 -mt-4"
@@ -33,7 +33,7 @@ function MyBlogs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Parse the search string to get the message parameter
+    // Parsing the search string to get the message parameter
     const searchParams = new URLSearchParams(location.search);
     const message = searchParams.get('message');
 
@@ -53,9 +53,8 @@ function MyBlogs() {
   }, [location.search, navigate]);
 
 
+  //deleting single post
   const handleDelete = async (id) => {
-
-    //deleting single post
     try {
       setPosts(posts.filter(post => post.id !== id));
       await supabase.from('posts').delete().eq("id", id);
@@ -121,7 +120,7 @@ function MyBlogs() {
         </a>
 
         {
-          posts && posts.map((post, idx) => {
+          posts ? posts.map((post, idx) => {
             return (
               <Blog
                 key={idx}
@@ -134,6 +133,8 @@ function MyBlogs() {
               />
             )
           })
+            :
+            <h1 className={`${customStyles.heading} mt-44`}>Loading ...</h1>
         }
         <p>{error && error}</p>
       </div>
