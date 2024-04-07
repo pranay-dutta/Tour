@@ -11,7 +11,8 @@ const Trending = () => {
   const styles = {
     heading: "text-3xl text-center font-semibold mb-2 mt-12",
     line: "w-1/2 drop-shadow-2xl mx-auto bg-black h-[1px] mb-10",
-    newsContainer: "2xl:grid xl:grid flex flex-col grid-cols-2 gap-10 xl:w-8/12 lg:w-10/12 md:w-12/12 md:gap-4 mx-auto sm:grid items-center justify-items-center"
+    newsContainer: "2xl:grid xl:grid flex flex-col grid-cols-2 gap-10 xl:w-8/12 lg:w-10/12 md:w-12/12 md:gap-4 mx-auto sm:grid items-center justify-items-center",
+    error: "md:text-5xl text-4xl text-center my-10 text-red-700",
   }
 
   /* fetching all the news from the API */
@@ -32,7 +33,7 @@ const Trending = () => {
 
   return (
     <div>
-      <div className="pb-12">
+      <div className="min-h-screen">
         <Navbar />
         <h1 className={styles.heading}>TRENDING NEWS</h1>
         <div className={styles.line}> </div>
@@ -58,7 +59,7 @@ const Trending = () => {
             <h1 className={styles.heading}>Loading...</h1>
           }
         </div>
-        <p className="text-2xl text-center text-red-700">{ error && "Sorry this a free API. It doesn't takes https requests🥲"}</p>
+        <p className={styles.error}>{error && "This is a free API that doesn't accept HTTPS requests🥲"}</p>
       </div>
       <Footer />
     </div>
