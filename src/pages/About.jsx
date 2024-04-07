@@ -9,7 +9,7 @@ const styles = {
 const About = () => {
   return (
     <div>
-      <div className="h-screen">
+      <div className="min-h-screen">
         <Navbar />
         <div className={styles.container}>
           <div className={styles.headingContainer}>

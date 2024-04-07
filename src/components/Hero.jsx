@@ -1,12 +1,12 @@
 import { useState } from "react";
 const styles = {
   main: "flex flex-col items-center gap-8 mt-8",
-  imageHide: "rounded w-10/12 sm:w-7/12 md:w-10/12 lg:w-5/12 drop-shadow-lg hidden",
+  imageHide: "rounded w-10/12 sm:w-7/12 md:w-10/12 lg:w-5/12 drop-shadow-lg opacity-0",
   imageShow: "rounded w-10/12 sm:w-7/12 md:w-10/12 lg:w-5/12 drop-shadow-lg",
   heading: "lg:text-3xl md:text-2xl sm:text-xl text-2xl md:text-center text-left font-semibold w-9/12",
   paragraph: "text-sm text-left lg:text-center lg:w-5/12 w-9/12",
   line: "lg:w-3/12 w-8/12 mx-auto mt-6 h-[1px] rounded-sm bg-black",
-  loading: "text-3xl text-center font-normal my-5 absolute top-1/2",
+  loading: "text-3xl text-center font-normal my-5 absolute top-1/3",
 }
 
 const Hero = () => {
@@ -26,7 +26,7 @@ const Hero = () => {
           />
         }
         {
-          isLoading && <h1 className={styles.loading}> Loading . . .</h1>
+          isLoading && <h1 className={styles.loading}> Loading image. . .</h1>
         }
         <h1 className={styles.heading}>Exploring Horizons: A Journey Through the World</h1>
         <p className={styles.paragraph}>
