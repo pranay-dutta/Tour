@@ -8,6 +8,7 @@ const Trending = () => {
   const [error, setError] = useState(null);
   const API_URL = import.meta.env.VITE_NEWS_API_URL;
   const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+  
   const styles = {
     heading: "text-3xl text-center font-semibold mb-2 mt-12",
     loading: "text-3xl text-center font-normal my-5 absolute top-1/2",
@@ -20,7 +21,7 @@ const Trending = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const { data } = await axios.get(`${API_URL}top-headlines?country=in&apiKey=${API_KEY}`);
+        const { data } = await axios.get(`${API_URL}/top-headlines?country=us&apiKey=${API_KEY}`);
         setResults(data.articles);
       } catch (error) {
         setResults(null)
